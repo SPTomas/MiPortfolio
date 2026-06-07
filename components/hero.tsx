@@ -27,19 +27,19 @@ export function Hero() {
 
       <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="max-w-3xl">
-          <p className="text-primary font-mono text-sm mb-4 animate-fade-in-up [animation-delay:0ms]">
-            Hola, soy
+          <p className="text-primary font-mono text-sm md:text-base mb-4 animate-fade-in-up [animation-delay:0ms]">
+            Mi portfolio
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance animate-fade-in-up [animation-delay:120ms]">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance animate-fade-in-up [animation-delay:120ms] leading-tight">
             <span className="text-shimmer">Suarez Paez, Tomás</span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed text-pretty animate-fade-in-up [animation-delay:240ms]">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed text-pretty animate-fade-in-up [animation-delay:240ms]">
             Analista Desarrollador Universitario en Sistemas de Información egresado de la{" "}
             <span className="text-foreground font-medium">UTN FRC</span>, estudiando actualmente
             Ingeniería en Sistemas. Experiencia práctica en desarrollo full-stack mediante proyecto
             de tesis (Analista) con tecnologías modernas, metodología{" "}
             <span className="text-foreground font-medium">Scrum</span> e inglés{" "}
-            <span className="text-primary font-medium">B2</span> certificado por EF.
+            <span className="text-primary font-medium">B2</span>.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 animate-fade-in-up [animation-delay:360ms]">
