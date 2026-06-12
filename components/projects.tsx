@@ -8,7 +8,7 @@ const projects = [
   {
     title: "Sistema de Cuidado de Mascotas",
     description:
-      "Proyecto final de carrera desarrollado con metodología Scrum. Sistema completo para gestión de cuidado de mascotas con calendario interactivo, mapas y notificaciones.",
+      "Proyecto final de Analista desarrollado con metodología Scrum. Sistema completo para gestión de cuidado de mascotas con calendario interactivo, mapas y notificaciones.",
     tags: ["React", "Node.js", "PostgreSQL", "Prisma ORM", "FullCalendar", "Leaflet", "NodeMailer"],
     context: "UTN FRC | Proyecto Final (Analista)",
     live: "https://www.linkedin.com/posts/tomas-ticiano-suarez-paez-22b5582b7_utnfrc-sistemas-fullstack-ugcPost-7435140018190331905-Qw6u/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEwT-EMBVpaVUtgL1RRuTZLmUJHZ-tf8R0I",
