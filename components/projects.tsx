@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { ExternalLink, ChevronDown } from "lucide-react"
+import { ArrowUpRight, ChevronDown, PawPrint, CalendarDays, MapPin } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import { SectionHeading } from "@/components/section-heading"
+import { useLanguage } from "@/components/language-provider"
 
 const projects = [
   {
@@ -38,17 +40,24 @@ const projects = [
 ]
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
+  const { t } = useLanguage()
   const [expanded, setExpanded] = useState(false)
   const detailsId = `project-details-${index}`
 
   return (
-    <Reveal delay={index * 120}>
-      <article className="group relative bg-card border border-border rounded-xl p-6 md:p-8 transition-all duration-300 hover:border-primary/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
+    <Reveal delay={index * 120} className="h-full">
+      <article className="group relative h-full overflow-hidden bg-card border border-border rounded-xl transition-all duration-300 hover:border-primary/40">
+        <div className={`project-visual ${index === 0 ? "project-visual-pets" : "project-visual-studio"}`} aria-hidden="true">
+          <span className="project-number">{t("PROYECTO")} / 0{index + 1}</span>
+          {index === 0 ? <div className="pet-graphic"><div className="pet-tile"><CalendarDays size={27} /></div><div className="pet-tile pet-tile-main"><PawPrint size={50} strokeWidth={1.3} /></div><div className="pet-tile"><MapPin size={27} /></div></div> : <div className="studio-graphic"><span>{t("ESTUDIO")}</span><strong>Iriarte.</strong><span>{t("PRESENCIA DIGITAL")}</span></div>}
+          <span className="project-concept">{t("ILUSTRACIÓN CONCEPTUAL")}</span>
+        </div>
+        <div className="p-6 md:p-8">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
-            <span className="text-xs font-mono text-primary mb-2 block">{project.context}</span>
+            <span className="text-xs font-mono text-primary mb-2 block">{t(project.context)}</span>
             <h3 className="text-xl md:text-2xl font-semibold text-foreground transition-colors group-hover:text-primary">
-              {project.title}
+              {t(project.title)}
             </h3>
           </div>
           <a
@@ -56,14 +65,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 text-muted-foreground transition-all hover:text-primary hover:-translate-y-0.5"
-            aria-label="Ver proyecto en vivo"
+            aria-label={`${t("Ver")} ${t(project.title)} ${t(index === 0 ? "en LinkedIn" : "en vivo")}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <ExternalLink size={20} />
+            <ArrowUpRight size={22} />
           </a>
         </div>
 
-        <p className="text-muted-foreground mt-4">{project.description}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground mt-4">{t(project.description)}</p>
 
         {/* Tags: preview when collapsed, full list when expanded */}
         <div className="flex flex-wrap gap-2 mt-6">
@@ -77,7 +86,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
           ))}
           {project.tags.length > 4 && !expanded && (
             <span className="text-xs font-mono px-3 py-1 text-muted-foreground">
-              +{project.tags.length - 4} más
+              +{project.tags.length - 4} {t("más")}
             </span>
           )}
         </div>
@@ -90,34 +99,38 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
           }`}
         >
           <div className="overflow-hidden">
-            <h4 className="text-sm font-medium text-foreground mb-3">Características principales:</h4>
-            <ul className="grid md:grid-cols-2 gap-2">
+            <h4 className="text-sm font-medium text-foreground mb-3">{t("Características principales:")}</h4>
+            <ul className="grid gap-2">
               {project.features.map((feature, featureIndex) => (
                 <li
                   key={featureIndex}
                   className="text-sm text-muted-foreground flex items-start gap-2"
                 >
                   <span className="text-primary mt-1">•</span>
-                  {feature}
+                  {t(feature)}
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-border pt-5">
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
           aria-controls={detailsId}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
         >
-          {expanded ? "Ver menos" : "Ver más"}
+          {t(expanded ? "Menos detalles" : "Detalles técnicos")}
           <ChevronDown
             size={16}
             className={`transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
           />
         </button>
+        <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline">{t(index === 0 ? "Ver presentación" : "Visitar sitio")}<ArrowUpRight size={15} /></a>
+        </div>
+        </div>
       </article>
     </Reveal>
   )
@@ -125,16 +138,13 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="section-space border-t border-border">
+      <div className="page-shell">
         <Reveal>
-          <h2 className="text-3xl font-bold text-foreground mb-2">Proyectos</h2>
-          <p className="text-muted-foreground mb-12">
-            Trabajos destacados que demuestran mis habilidades técnicas
-          </p>
+          <SectionHeading number="01" label="TRABAJO SELECCIONADO" title="Del concepto al código." description="Proyectos que conectan lo que aprendo con lo que me gusta hacer: construir soluciones útiles." />
         </Reveal>
 
-        <div className="grid gap-8">
+        <div className="grid items-start gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}

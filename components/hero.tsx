@@ -1,83 +1,34 @@
-import { Mail, ArrowDown, Download } from "lucide-react"
-
-function LinkedinIcon({ size = 24 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-    </svg>
-  )
-}
+import { ArrowDown, ArrowUpRight, Download, BriefcaseBusiness, GraduationCap, Globe2 } from "lucide-react"
+import { StackVisual } from "@/components/stack-visual"
+import { StackIcon } from "@/components/stack-icon"
+import { primaryStack } from "@/lib/stack"
+import { T } from "@/components/language-provider"
 
 export function Hero() {
   return (
-    <section id="about" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Animated background accents */}
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/15 blur-3xl animate-float-slow" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl animate-float-slow-reverse" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <div className="max-w-3xl">
-          <p className="text-primary font-mono text-sm md:text-base mb-4 animate-fade-in-up [animation-delay:0ms]">
-            Mi portfolio
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance animate-fade-in-up [animation-delay:120ms] leading-tight">
-            <span className="text-shimmer">Suarez Paez, Tomás</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed text-pretty animate-fade-in-up [animation-delay:240ms]">
-            Analista Desarrollador Universitario en Sistemas de Información egresado de la{" "}
-            <span className="text-foreground font-medium">UTN FRC</span>, estudiando actualmente
-            Ingeniería en Sistemas. Experiencia práctica en desarrollo full-stack mediante proyecto
-            de tesis (Analista) con tecnologías modernas, metodología{" "}
-            <span className="text-foreground font-medium">Scrum</span> e inglés{" "}
-            <span className="text-primary font-medium">B2</span>.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 animate-fade-in-up [animation-delay:360ms]">
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium transition-all hover:opacity-90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
-            >
-              <Mail size={18} className="transition-transform group-hover:scale-110" />
-              Contactar
-            </a>
-            <a
-              href="/CV_Tomas_Suarez.pdf"
-              download
-              className="group inline-flex items-center gap-2 border border-border text-foreground px-6 py-3 rounded-lg font-medium transition-all hover:border-primary hover:text-primary hover:-translate-y-0.5"
-            >
-              <Download size={18} className="transition-transform group-hover:translate-y-0.5" />
-              Descargar CV
-            </a>
-            <a
-              href="https://www.linkedin.com/in/tomas-ticiano-suarez-paez-22b5582b7/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-all hover:text-primary hover:-translate-y-0.5"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon size={24} />
-            </a>
+    <section id="about" className="hero-section relative overflow-hidden">
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-watermark" aria-hidden="true">BUILD.</div>
+      <div className="page-shell relative">
+        <div className="hero-topline animate-fade-in-up"><span className="eyebrow"><span className="status-dot" /><T>DESARROLLADOR FULL-STACK</T></span><span className="font-mono text-[10px] tracking-wider text-muted-foreground">CÓRDOBA, ARGENTINA ↗</span></div>
+        <div className="hero-composition">
+          <div className="relative z-10">
+            <p className="mb-6 text-sm text-muted-foreground animate-fade-in-up"><T>Hola, soy</T> <span className="text-foreground">Tomás Suarez Paez.</span></p>
+            <h1 className="hero-title animate-fade-in-up [animation-delay:100ms]"><T>De la idea.</T><br /><span className="hero-title-accent"><T>A lo real.</T><svg viewBox="0 0 350 18" fill="none" aria-hidden="true"><path d="M3 13C80 1 230 0 345 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg></span></h1>
+            <p className="hero-statement animate-fade-in-up [animation-delay:180ms]"><T>Diseño la lógica.</T> <span><T>Construyo la experiencia.</T></span></p>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground animate-fade-in-up [animation-delay:220ms]"><T>Desarrollo soluciones web con Angular, Spring Boot y PostgreSQL. Del primer componente a la última consulta, cada pieza tiene un propósito.</T></p>
+            <div className="mt-8 flex flex-wrap gap-3 animate-fade-in-up [animation-delay:300ms]"><a href="#projects" className="button-primary"><T>Explorar proyectos</T><ArrowUpRight size={18} /></a><a href="/CV_Tomas_Suarez.pdf" download className="button-secondary"><T>Descargar CV</T><Download size={17} /></a></div>
+            <div className="hero-stack"><span><T>MI STACK PRINCIPAL</T></span><div>{primaryStack.map((tech) => <span key={tech.id}><StackIcon id={tech.id} size={16} />{tech.name}</span>)}</div></div>
           </div>
+          <StackVisual />
+        </div>
+        <div className="profile-strip">
+          <div><BriefcaseBusiness size={19} /><p><strong><T>Una nueva etapa profesional.</T></strong><span><T>Recientemente empecé a trabajar, sumando experiencia laboral a mi formación y a mis proyectos.</T></span></p></div>
+          <div><GraduationCap size={21} /><p><strong>UTN · FRC</strong><span><T>Analista universitario. Estudiante de Ingeniería en Sistemas.</T></span></p></div>
+          <div><Globe2 size={19} /><p><strong><T>Inglés B2 · Español nativo</T></strong><span><T>Ideas claras. Comunicación también.</T></span></p></div>
+          <a href="#projects" className="hero-scroll"><span className="sr-only"><T>Explorar proyectos</T></span><ArrowDown size={21} aria-hidden="true" /></a>
         </div>
       </div>
-
-      <a
-        href="#projects"
-        aria-label="Ir a proyectos"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors animate-bounce-subtle"
-      >
-        <ArrowDown size={24} />
-      </a>
     </section>
   )
 }

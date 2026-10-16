@@ -21,11 +21,15 @@ export function Reveal({
   as: Tag = "div",
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     const node = ref.current
     if (!node) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    if (!("IntersectionObserver" in window)) return
+    if (node.getBoundingClientRect().top < window.innerHeight) return
+    setVisible(false)
 
     const observer = new IntersectionObserver(
       (entries) => {

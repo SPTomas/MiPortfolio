@@ -10,16 +10,15 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Desarrollador Full-Stack',
-  description: 'Analista Universitario en Sistemas de Información - UTN FRC. Desarrollador Full-Stack con experiencia en React, Node.js y PostgreSQL.',
+  title: 'Tomás Suarez Paez | Desarrollador Full-Stack',
+  description: 'Tomás Suarez Paez. Desarrollador full-stack con foco en Angular, Spring Boot y PostgreSQL. Analista universitario de la UTN FRC: de la idea al producto.',
   icons: {
     icon: [
       {
-        url: '/icon.svg',
+        url: '/icon.svg?v=2',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
   },
 }
 
@@ -30,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
