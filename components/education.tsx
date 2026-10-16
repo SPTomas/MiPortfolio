@@ -1,5 +1,7 @@
-import { GraduationCap, Calendar } from "lucide-react"
+import { Calendar, ArrowUpRight } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import { SectionHeading } from "@/components/section-heading"
+import { T } from "@/components/language-provider"
 
 const education = [
   {
@@ -20,22 +22,21 @@ const education = [
 
 export function Education() {
   return (
-    <section id="education" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="education" className="section-space">
+      <div className="page-shell grid gap-10 lg:grid-cols-[1fr_1.3fr]">
         <Reveal>
-          <h3 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-2">
-            <GraduationCap className="text-primary" size={24} />
-            Formación Académica
-          </h3>
+          <SectionHeading number="03" label="FORMACIÓN" title="Curiosidad constante." />
+          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground"><T>Una base académica sólida y la motivación de seguir aprendiendo, proyecto a proyecto.</T></p>
+          <div className="mt-8 inline-flex items-center gap-3 text-xs text-primary"><T>Universidad Tecnológica Nacional</T> <ArrowUpRight size={16} /></div>
         </Reveal>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-6">
+        <div className="pl-2">
+          <div>
             {education.map((item, index) => (
               <Reveal key={index} delay={index * 100}>
-                <article className="bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5">
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <h4 className="text-lg font-medium text-foreground">{item.degree}</h4>
+                <article className="education-card">
+                  <div className="flex flex-col-reverse items-start justify-between gap-4 mb-3 sm:flex-row">
+                    <h3 className="text-lg font-medium text-foreground"><T>{item.degree}</T></h3>
                     <span
                       className={`shrink-0 text-xs font-mono px-2 py-1 rounded ${
                         item.status === "Completado"
@@ -43,15 +44,15 @@ export function Education() {
                           : "bg-secondary text-secondary-foreground"
                       }`}
                     >
-                      {item.status}
+                      <T>{item.status}</T>
                     </span>
                   </div>
-                  <p className="text-primary font-medium text-sm mb-2">{item.institution}</p>
+                  <p className="text-primary font-medium text-sm mb-2"><T>{item.institution}</T></p>
                   <p className="text-muted-foreground text-sm flex items-center gap-2 mb-3">
                     <Calendar size={14} />
-                    {item.period}
+                    <T>{item.period}</T>
                   </p>
-                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                  <p className="text-muted-foreground text-sm"><T>{item.description}</T></p>
                 </article>
               </Reveal>
             ))}
